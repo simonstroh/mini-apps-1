@@ -1,2 +1,153 @@
-
-
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    td {
+      width: 120px;
+      height: 120px;
+      padding: 2px;
+      border: 1px solid #e7e7e7;
+      color: transparent;
+    }
+    span, a {
+      display: block;
+      transform: scale(1, 1.5);
+      font-family: Avenir;
+      font-style: italic;
+      font-weight: bold;
+      font-size: 26pt;
+    }
+    span {
+      padding: 20px 0;
+    }
+    a {
+      padding: 10px 0;
+      cursor: pointer;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    p {
+      font-family: Courier New;
+      font-weight: 300;
+      font-size: 12pt;
+    }
+    #header {
+      display: flex;
+      justify-content: center;
+    }
+    #header img {
+      width: 100px;
+      height: 100px;
+      opacity: 0.8;
+    }
+    #pop-up {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: #e7e7e7;
+      padding: 12px;
+    }
+    form > p {
+      margin: 8px;
+    }
+    input[type=text] {
+      width: 120px;
+      padding: 8px;
+      border: 1px solid #888888;
+      font-family: Helvetica;
+      font-weight: 100;
+    }
+    input[type=submit] {
+      display: none;
+    }
+    #close-pop-up {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 6pt;
+      padding: 0;
+      cursor: pointer;
+    }
+    #names-view {
+      padding: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    #names-view > img {
+      max-width: 48px;
+      max-height: 48px;
+    }
+    #names-view > p {
+      margin: 8px 0;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="header"><img src="Untitled-10.png"></div>
+    <p>Tic Tac Toe</p>
+    <div id="container">
+      <table id="app">
+        <tr>
+          <td id="00">0</td>
+          <td id="01">0</td>
+          <td id="02">0</td>
+        </tr>
+        <tr>
+          <td id="10">0</td>
+          <td id="11">0</td>
+          <td id="12">0</td>
+        </tr>
+        <tr>
+          <td id="20">0</td>
+          <td id="21">0</td>
+          <td id="22">0</td>
+        </tr>
+      </table>
+    </div>
+    <div id="pop-up">
+      <span id="close-pop-up" onclick="handleClick()">&#10005;</span>
+      <form id="my-form">
+        <p>Player 1</p>
+        <input id="player1" type="text" placeholder="Initials Here">
+        <p>Player 2</p>
+        <input id="player2" type="text" placeholder="Initials Here">
+        <input type="submit">
+      </form>
+    <script src="app.js"></script>
+    <script>
+    function handleClick() {
+      document.getElementById('pop-up').remove()
+    }
+    var form = document.getElementById('my-form')
+    form.addEventListener('submit', function(event) {
+      event.preventDefault()
+      var el = document.createElement('div')
+      var img = document.createElement('img')
+      var player1Name = document.createElement('p')
+      player1Name.innerHTML = document.getElementById('player1').value.toLowerCase()
+      var player2Name = document.createElement('p')
+      player2Name.innerHTML = document.getElementById('player2').value.toLowerCase()
+      img.setAttribute('src', 'player2-piece.svg')
+      var img2 = document.createElement('img')
+      img2.setAttribute('src', 'player1-piece.svg')
+      el.appendChild(img)
+      el.appendChild(player1Name)
+      el.appendChild(img2)
+      el.appendChild(player2Name)
+      el.setAttribute('id', 'names-view')
+      document.body.appendChild(el)
+      document.getElementById('pop-up').remove()
+    })
+    </script>
+  </body>
+</html>
