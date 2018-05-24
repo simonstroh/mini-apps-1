@@ -25,6 +25,10 @@ class CardForm extends React.Component {
       cvv: '',
       date: ''
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleNumber = this.handleNumber.bind(this)
+    this.handleCvv = this.handleCvv.bind(this)
+    this.handleDate = this.handleDate.bind(this)
   }
   handleSubmit(e) {
     e.preventDefault()
@@ -58,13 +62,13 @@ class CardForm extends React.Component {
   }
   render() {
     return(
-      <form onSubmit={this.handleSubmit.bind(this)} style={this.props.styles}>
+      <form onSubmit={this.handleSubmit} style={this.props.styles}>
         <p>Card Number</p>
-        <input type="text" onChange={this.handleNumber.bind(this)} />
+        <input type="text" onChange={this.handleNumber} />
         <p>CVV</p>
-        <input type="text" onChange={this.handleCvv.bind(this)} />
+        <input type="text" onChange={this.handleCvv} />
         <p>Expiry Date</p>
-        <input type="text" onChange={this.handleDate.bind(this)} />
+        <input type="text" onChange={this.handleDate} />
         <input type="submit" />
       </form>
     )
@@ -82,6 +86,13 @@ class ShippingForm extends React.Component {
       state: '',
       zip: ''
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleName = this.handleName.bind(this)
+    this.handleAddress1 = this.handleAddress1.bind(this)
+    this.handleAddress2 = this.handleAddress2.bind(this)
+    this.handleCity = this.handleCity.bind(this)
+    this.handleState = this.handleState.bind(this)
+    this.handleZip = this.handleZip.bind(this)
   }
   handleSubmit(e) {
     e.preventDefault()
@@ -121,19 +132,19 @@ class ShippingForm extends React.Component {
   }
   render() {
     return (
-      <form onSubmit={this.handleSubmit.bind(this)} style={this.props.styles}>
+      <form onSubmit={this.handleSubmit} style={this.props.styles}>
         <p>Name</p>
-        <input type="text" onChange={this.handleName.bind(this)}/>
+        <input type="text" onChange={this.handleName}/>
         <p>Address Line 1</p>
-        <input type="text" onChange={this.handleAddress1.bind(this)} />
+        <input type="text" onChange={this.handleAddress1} />
         <p>Address Line 2</p>
-        <input type="text" onChange={this.handleAddress2.bind(this)} />
+        <input type="text" onChange={this.handleAddress2} />
         <p>City</p>
-        <input type="text" onChange={this.handleCity.bind(this)} />
+        <input type="text" onChange={this.handleCity} />
         <p>State</p>
-        <input type="text" onChange={this.handleState.bind(this)} />
+        <input type="text" onChange={this.handleState} />
         <p>ZIP</p>
-        <input type="text" onChange={this.handleZip.bind(this)} />
+        <input type="text" onChange={this.handleZip} />
         <input type="submit" />
       </form>
     )
@@ -146,6 +157,11 @@ class RegisterForm extends React.Component {
     this.state = {
 
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleFirstName = this.handleFirstName.bind(this)
+    this.handleLastName = this.handleLastName.bind(this)
+    this.handleEmail = this.handleEmail.bind(this)
+    this.handlePassword = this.handlePassword.bind(this)
   }
   handleSubmit(e) {
     e.preventDefault()
@@ -179,15 +195,15 @@ class RegisterForm extends React.Component {
   }
   render() {
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form onSubmit={this.handleSubmit}>
         <p>First Name</p>
-        <input type="text" onChange={this.handleFirstName.bind(this)}/>
+        <input type="text" onChange={this.handleFirstName}/>
         <p>Last Name</p>
-        <input type="text" onChange={this.handleLastName.bind(this)}/>
+        <input type="text" onChange={this.handleLastName}/>
         <p>Email</p>
-        <input type="text" onChange={this.handleEmail.bind(this)}/>
+        <input type="text" onChange={this.handleEmail}/>
         <p>Password</p>
-        <input type="password" onChange={this.handlePassword.bind(this)}/>
+        <input type="password" onChange={this.handlePassword}/>
         <input type="submit" />
       </form>
     )
@@ -214,6 +230,9 @@ class App extends React.Component {
     }
     this.beginCheckout = this.beginCheckout.bind(this)
     this.closeModal = this.closeModal.bind(this)
+    this.next = this.next.bind(this)
+    this.next2 = this.next2.bind(this)
+    this.next3 = this.next3.bind(this)
   }
   beginCheckout() {
     this.setState({styles: {right: '0'}})
@@ -238,9 +257,9 @@ class App extends React.Component {
           <span onClick={this.closeModal} id="close-pop-up">&#10005;</span>
           <span>Checkout</span>
           <h5>Customer Information > Credit Card Information > Complete Order</h5>
-          <RegisterForm showNext={this.next.bind(this)}/>
-          <ShippingForm showNext={this.next2.bind(this)} styles={this.state.shippingFormStyles}/>
-          <CardForm showNext={this.next3.bind(this)} styles={this.state.cardFormStyles}/>
+          <RegisterForm showNext={this.next}/>
+          <ShippingForm showNext={this.next2} styles={this.state.shippingFormStyles}/>
+          <CardForm showNext={this.next3} styles={this.state.cardFormStyles}/>
           <CompleteOrderForm styles={this.state.completeFormStyles} />
         </div>
       </div>
