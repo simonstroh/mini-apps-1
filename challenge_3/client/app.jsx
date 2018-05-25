@@ -155,7 +155,7 @@ class RegisterForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFirstName = this.handleFirstName.bind(this)
